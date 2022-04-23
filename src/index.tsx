@@ -5,11 +5,15 @@ import { ApolloProvider } from '@apollo/client'
 import { Provider } from 'react-redux'
 import { Router } from './router/router'
 import { store } from './state/store'
+import { ThemeProvider } from '@mui/material'
+import { theme } from './theme/Theme'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <ApolloProvider client={apolloClient}>
-    <Provider store={store}>
-      <Router />
-    </Provider>
-  </ApolloProvider>,
+  <ThemeProvider theme={theme}>
+    <ApolloProvider client={apolloClient}>
+      <Provider store={store}>
+        <Router />
+      </Provider>
+    </ApolloProvider>
+  </ThemeProvider>,
 )
