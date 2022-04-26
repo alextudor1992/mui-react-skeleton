@@ -1,11 +1,13 @@
 {
-  "printWidth": 100,
+  "printWidth": 80,
   "trailingComma": "all",
   "tabWidth": 2,
   "arrowParens": "always",
   "semi": false,
   "endOfLine": "lf",
   "singleQuote": true,
+  "bracketSameLine": false,
+  "proseWrap": "always",
   "overrides": [
     {
       "files": ["*.ts?(x)", "*.js?(x)"],

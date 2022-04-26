@@ -5,7 +5,7 @@ import { routes } from './routes'
 import { State } from '../state/store'
 
 export const PrivateRoute: React.FunctionComponent<PropsWithChildren<any>> = ({ children }) => {
-  const user = useSelector<State>((state) => state.user)
+  const user = useSelector<State>((state) => state.currentUser)
   if (!user) {
     return <Navigate replace to={routes.login} />
   }
