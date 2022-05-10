@@ -1,0 +1,29 @@
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1.29.0
+jobs:
+  test:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - checkout
+      - node/install:
+          install-yarn: false
+          node-version: '18.1.0'
+      - run:
+          command: curl -L https://pnpm.js.org/pnpm.js | node - add --global pnpm
+          name: Setting up pnpm
+      - cypress/install:
+          build: pnpm build
+      - cypress/run:
+          requires:
+            - cypress/install
+          start: pnpm start
+          record: true
+          executor: cypress/base-14
+          install-command: pnpm install --frozen-lockfile
+          verify-command: pnpm cypress verify
+workflows:
+  build:
+    jobs:
+      - test
